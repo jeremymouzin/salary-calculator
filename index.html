@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Salaire</title>
+    <link rel="stylesheet" href="/src/index.css">
+</head>
+
+<body class="min-h-screen bg-base-200 p-4">
+    <div class="card bg-base-100 shadow-xl max-w-2xl mx-auto">
+        <div class="card-body">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h2 class="card-title text-2xl">
+                        Calculateur de Salaire Net
+                    </h2>
+                    <p class="text-base-content/70">Calculez votre salaire net mensuel et le montant net de vos factures
+                    </p>
+                </div>
+                <div class="form-control w-48">
+                    <label class="label">
+                        <span class="label-text font-medium">Prélèvements Sociaux (%)</span>
+                    </label>
+                    <input type="number" id="social-contribution" min="0" max="100" value="22"
+                        class="input input-bordered input-lg">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body pt-0">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-6">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-medium">Taux Horaire (€/h)</span>
+                            <span class="label-text-alt text-lg" id="hourly-rate-display">15.00 €</span>
+                        </label>
+                        <div class="flex gap-4 items-center">
+                            <input type="range" id="hourly-rate-slider" min="0" max="100" step="1" value="15"
+                                class="range range-primary flex-1">
+                            <input type="number" id="hourly-rate" min="0" step="1" value="15"
+                                class="input input-bordered input-lg w-32">
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-medium">Taux Journalier Moyen (€/jour)</span>
+                            <span class="label-text-alt text-lg" id="tjm-display">0.00 €</span>
+                        </label>
+                        <div class="flex gap-4 items-center">
+                            <input type="range" id="tjm-slider" min="0" max="2000" step="10" value="0"
+                                class="range range-primary flex-1">
+                            <input type="number" id="tjm" min="0" step="10" value="0"
+                                class="input input-bordered input-lg w-32">
+                        </div>
+                        <p class="text-sm text-base-content/70 mt-2">Calculé automatiquement à partir du taux horaire
+                            (8h par jour)</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-medium">Montant de la facture (€)</span>
+                            <span class="label-text-alt text-lg" id="invoice-amount-display">0.00 €</span>
+                        </label>
+                        <div class="flex gap-4 items-center">
+                            <input type="range" id="invoice-amount-slider" min="0" max="10000" step="100" value="0"
+                                class="range range-primary flex-1">
+                            <input type="number" id="invoice-amount" min="0" step="100" value="0"
+                                class="input input-bordered input-lg w-32">
+                        </div>
+                        <div class="flex justify-end mt-2">
+                            <span class="text-base text-base-content/70">Montant net: </span>
+                            <span id="net-invoice-amount" class="text-base font-medium text-primary ml-2">0.00 €</span>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-200">
+                        <div class="card-body p-4">
+                            <h3 class="card-title text-lg mb-4">Résumé mensuel</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base-content/70">Salaire brut mensuel:</span>
+                                    <span id="gross-salary" class="font-medium">2275.05 €</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base-content/70">Prélèvements:</span>
+                                    <span id="deductions" class="text-error font-medium">-523.26 €</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base-content/70">Salaire net mensuel:</span>
+                                    <span id="net-salary" class="text-lg font-bold text-primary">1751.79 €</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base-content/70">Salaire net par jour:</span>
+                                    <span id="net-salary-per-day" class="font-medium text-primary">58.39 €</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/script.js"></script>
+</body>
+
+</html>
